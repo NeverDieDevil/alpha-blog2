@@ -1,13 +1,15 @@
-<h1 align="center" class="tekst">Wybrany artykuł</h1>
 
-<p class="tekst"> 
-  Tytuł: <%= @article.title %><br/>
-</p>
+<h2 align="center" class="tekst"> Tytuł: <%= @article.title %></h2>
+  <div class="well col-xs-8 col-xs-offset-2">
+    <h4 class="center description"><strong>Description:</strong></h4>
+    <hr>
+    <%= simple_format(@article.description) %>
 
-<p class="tekst">
-  Treść: <%= @article.description %><br/>
-</p>
-<%= link_to "Powrót do listy artykułów", articles_path%>
-<p>
-<%= link_to "Edytuj", edit_article_path(@article)%>
-</p>
+    <div class="article-actions">
+      <%= link_to "Pokaż wszystkie artykuły", articles_path, class: "btn btn-xs btn-success" %> 
+      <%= link_to "Usuń ten artykuł", article_path(@article), method: :delete, 
+                                      data: {confirm:"Jesteś pewien, że chcesz usunąć ten artykuł?"},
+                                      class: "btn btn-xs btn-danger"%>
+      <%= link_to "Edytuj", edit_article_path(@article), class: "btn btn-xs btn-primary" %>
+    </div>
+  </div>
